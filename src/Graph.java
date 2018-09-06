@@ -29,7 +29,7 @@ public class Graph {
             int position = stack.peek();
             int isGo = 0;
             for (int i = 0; i < n; i++) {
-                if (map[position][i] == 1 && flag[i] == 0) {
+                if (flag[i] == 0 && map[position][i] == 1) {
                     stack.push(i);
                     flag[i] = 1;
                     isGo = 1;
