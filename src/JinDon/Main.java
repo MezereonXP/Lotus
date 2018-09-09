@@ -41,7 +41,7 @@ public class Main {
             for (Integer key : map.keySet()) {
                 for (int j = 0; j < map.get(key).size(); j++) {
                     for (int k = 0; k < result.size(); k++) {
-                        if (result.get(k).contains(key) && result.contains(map.get(key).get(j))) {
+                        if (result.get(k).contains(key) && result.get(k).contains(map.get(key).get(j))) {
                             result.get(k).remove(key);
                             if (k + 1 < result.size()) {
                                 result.get(k + 1).add(key);
@@ -53,18 +53,22 @@ public class Main {
                     }
                 }
             }
-            for (int k = 0; k < result.size(); k++) {
-                for (int j = 0; j < result.get(k).size(); j++) {
-                    for (int l = k + 1; l < result.size(); l++) {
-                        for (int m = 0; m < result.get(l).size(); m++) {
+            boolean flag = true;
+            for (int k = 0; k < result.size() && flag; k++) {
+                for (int j = 0; j < result.get(k).size() && flag; j++) {
+                    for (int l = k + 1; l < result.size() && flag; l++) {
+                        for (int m = 0; m < result.get(l).size() && flag; m++) {
                             if (!map.get(result.get(l).get(m)).contains(result.get(k).get(j))) {
                                 System.out.println("No");
+                                flag = false;
                             }
                         }
                     }
                 }
             }
-            System.out.println("Yes");
+            if (flag) {
+                System.out.println("Yes");
+            }
 
         }
     }
